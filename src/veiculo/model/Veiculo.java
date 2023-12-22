@@ -1,15 +1,17 @@
 package veiculo.model;
 
 public abstract class Veiculo {
-
+	
+	private int codVeiculo;
 	private String marca;
 	private String modelo;
 	private double preco;
 	private boolean disponibilidade;
 	private String categoria;
 
-	public Veiculo(String marca, String modelo, double preco, boolean disponibilidade, String categoria) {
+	public Veiculo(int codVeiculo,String marca, String modelo, double preco, boolean disponibilidade, String categoria) {
 		super();
+		this.codVeiculo = codVeiculo;
 		this.marca = marca;
 		this.modelo = modelo;
 		this.preco = preco;
@@ -20,6 +22,14 @@ public abstract class Veiculo {
 
 	public Veiculo() {
 
+	}
+
+	public int getCodVeiculo() {
+		return codVeiculo;
+	}
+
+	public void setCodVeiculo(int codVeiculo) {
+		this.codVeiculo = codVeiculo;
 	}
 
 	public String getMarca() {
@@ -62,12 +72,15 @@ public abstract class Veiculo {
 		this.disponibilidade = disponibilidade;
 	}
 
-	void visualizarVeiculo() {
+	public void visualizarVeiculo() {
 		System.out.println("-------Veículos Disponíveis-------");
+		System.out.println("----------------------------------");
+		System.out.println("Código do veículo: " + this.codVeiculo);
 		System.out.println("Veículo da categoria: " + this.categoria);
 		System.out.println("Marca: " + this.marca);
 		System.out.println("Modelo: " + this.modelo);
 		System.out.println("Preço da locação R$: " + this.preco + " diária");
+		
 
 		if (disponibilidade == true) {
 

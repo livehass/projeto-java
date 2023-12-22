@@ -1,7 +1,13 @@
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import veiculo.controller.VeiculoController;
+import veiculo.model.Caminhao;
+import veiculo.model.Carro;
+import veiculo.model.Moto;
+import veiculo.model.Veiculo;
 
 public class MenuPrincipal {
 
@@ -10,6 +16,22 @@ public class MenuPrincipal {
 
 		String opPrincipal;
 		int op;
+
+		Carro carro = new Carro(1, "Honda", "Civic", 350.00, true, "sedã", 5);
+
+		Moto moto = new Moto(2, "Honda", "Cb500", 75.00, true, "Naked", 479);
+
+		Caminhao caminhao = new Caminhao(3, "Volvo", "FH16", 1500.00, true, "Pesada", 6);
+
+		Carro carro2 = new Carro();
+		Moto moto2 = new Moto();
+		Caminhao caminhao2 = new Caminhao();
+
+		List<Veiculo> listaVeiculos = new ArrayList<Veiculo>();
+
+		listaVeiculos.add(caminhao);
+		listaVeiculos.add(carro);
+		listaVeiculos.add(moto);
 
 		VeiculoController vc = new VeiculoController();
 
@@ -32,22 +54,44 @@ public class MenuPrincipal {
 			sc.nextLine();
 			switch (op) {
 			case 1:
-				vc.veiculosDisponiveis();
+				vc.veiculosDisponiveis(listaVeiculos);
 
 				break;
 
 			case 2:
+				System.out.println("Digite o código do veículo locado: ");
+				int cod = sc.nextInt();
+				try {
 
-				vc.consultarLocacao();
+					if (cod == 1) {
+						carro2 = (Carro) vc.consultarLocacao(cod);
+						carro2.visualizarVeiculo();
+					} else if (cod == 2) {
+						moto2 = (Moto) vc.consultarLocacao(cod);
+						moto2.visualizarVeiculo();
+					} else if (cod == 3) {
+						caminhao2 = (Caminhao) vc.consultarLocacao(cod);
+						caminhao2.visualizarVeiculo();
+					} else {
+						System.out.println("Carro não encontrado!");
+					}
+
+				} catch (NullPointerException e) {
+					System.out.println("Veículo não existe!");
+				}
+				sc.nextLine();
+
 				break;
 			case 3:
-
-				vc.atualizarLocacao();
+				System.out.println("Digite o Código do veículo que deseja atualizar: ");
+				cod = sc.nextInt();
+				vc.atualizarLocacao(cod);
 
 				break;
 			case 4:
-
-				vc.cancelarLocacao();
+				System.out.println("Digite o Código do veículo que deseja deletar: ");
+				cod = sc.nextInt();
+				vc.cancelarLocacao(cod);
 
 				break;
 			default:
@@ -56,7 +100,6 @@ public class MenuPrincipal {
 			}
 
 			System.out.println("\nDeseja voltar ao menu principal(sim/não): ? ");
-
 			opPrincipal = sc.nextLine();
 
 		} while (opPrincipal.equalsIgnoreCase("sim"));

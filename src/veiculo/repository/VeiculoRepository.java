@@ -1,13 +1,17 @@
 package veiculo.repository;
 
+import java.util.List;
+
+import veiculo.model.Veiculo;
+
 public interface VeiculoRepository {
 
-	public void veiculosDisponiveis();
+	public void veiculosDisponiveis(List<Veiculo> listaVeiculos);
 
-	public void consultarLocacao();
+	public Veiculo consultarLocacao(int codVeiculo);
 
-	public void atualizarLocacao();
+	public void atualizarLocacao(int codVeiculo);
 
-	public void cancelarLocacao();
+	public void cancelarLocacao(int codVeiculo);
 
 }

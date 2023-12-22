@@ -3,9 +3,9 @@ package veiculo.model;
 public class Caminhao extends Veiculo {
 	private int qtdEixos;
 
-	public Caminhao(String marca, String modelo, double preco, boolean disponibilidade, String categoria,
-			int qtdEixos) {
-		super(marca, modelo, preco, disponibilidade, categoria);
+	public Caminhao(int codVeiculo, String marca, String modelo, double preco, boolean disponibilidade,
+			String categoria, int qtdEixos) {
+		super(codVeiculo, marca, modelo, preco, disponibilidade, categoria);
 		this.qtdEixos = qtdEixos;
 	}
 
@@ -25,6 +25,7 @@ public class Caminhao extends Veiculo {
 	public void visualizarVeiculo() {
 		super.visualizarVeiculo();
 		System.out.println("Quantidade de eixos: " + this.qtdEixos);
+		System.out.println("----------------------------------");
 	}
 
 }
