@@ -1,22 +1,17 @@
 
 import java.util.Scanner;
-import veiculo.model.Caminhao;
-import veiculo.model.Carro;
-import veiculo.model.Moto;
+
+import veiculo.controller.VeiculoController;
 
 public class MenuPrincipal {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
-		String opPrincipal, cpf;
+		String opPrincipal;
 		int op;
 
-		Carro carro = new Carro("Honda", "Civic", 350.00, true, "sedã", 5);
-
-		Moto moto = new Moto("Honda", "Cb500", 75.00, true, "Naked", 479);
-
-		Caminhao caminhao = new Caminhao("Volvo", "FH16", 1500.00, true, "Pesada", 6);
+		VeiculoController vc = new VeiculoController();
 
 		do {
 			System.out.println("***********************************************************\n"
@@ -29,7 +24,6 @@ public class MenuPrincipal {
 					+ "*          2 - Consultar uma locação                      *\n"
 					+ "*          3 - Atualizar dados da locação                 *\n"
 					+ "*          4 - Cancelar uma locação                       *\n"
-					+ "*          0 - Sair                                       *\n"
 					+ "*			                                  *\n"
 					+ "***********************************************************\n"
 					+ "*              Entre com a opção desejada                 *\n"
@@ -38,29 +32,23 @@ public class MenuPrincipal {
 			sc.nextLine();
 			switch (op) {
 			case 1:
-				carro.visualizarVeiculo();
-				moto.visualizarVeiculo();
-				caminhao.visualizarVeiculo();
+				vc.veiculosDisponiveis();
 
 				break;
 
 			case 2:
-				System.out.println("\nDigite o CPF para consultar locação: ");
 
-				cpf = sc.nextLine();
-				System.out.println("\nConsulta de locação realizada com sucesso para o cpf: " + cpf);
+				vc.consultarLocacao();
 				break;
 			case 3:
-				System.out.println("\nDigite o CPF para atualizar dados de locação: ");
 
-				cpf = sc.nextLine();
-				System.out.println("\nAtualização dos dados da locação realizada com sucesso para o cpf: " + cpf);
+				vc.atualizarLocacao();
+
 				break;
 			case 4:
-				System.out.println("\nDigite o CPF para cancelar uma locação: ");
 
-				cpf = sc.nextLine();
-				System.out.println("\nCancelamento da locação realizado com suscesso para o cpf: " + cpf);
+				vc.cancelarLocacao();
+
 				break;
 			default:
 				System.out.println("Opção inválida!!!");

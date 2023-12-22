@@ -67,7 +67,7 @@ public abstract class Veiculo {
 		System.out.println("Veículo da categoria: " + this.categoria);
 		System.out.println("Marca: " + this.marca);
 		System.out.println("Modelo: " + this.modelo);
-		System.out.println("Preço da locação R$: "+ this.preco +" diária");
+		System.out.println("Preço da locação R$: " + this.preco + " diária");
 
 		if (disponibilidade == true) {
 
